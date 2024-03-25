@@ -357,14 +357,14 @@ function getWorkSchedule(period, countWorkDays, countOffDays) {
       new Date(offset).getTime() <= endDate.getTime()
     ) {
       const date = new Date(offset);
-      const [day, month, year] = [
+      const [day2, month2, year2] = [
         date.getUTCDate().toString().padStart(2, '0'),
         (date.getUTCMonth() + 1).toString().padStart(2, '0'),
         date.getFullYear(),
       ];
       tmp += 1;
       offset += msPerDay;
-      result.push(`${day}-${month}-${year}`);
+      result.push(`${day2}-${month2}-${year2}`);
     }
   }
 
