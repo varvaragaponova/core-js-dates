@@ -340,9 +340,9 @@ function getWorkSchedule(period, countWorkDays, countOffDays) {
   const { end } = period;
 
   const [day, month, year] = start.split('-');
-  const startDate = new Date(+year, +month - 1, +day + 1);
+  const startDate = new Date(Date.UTC(+year, +month - 1, +day));
   const [day1, month1, year1] = end.split('-');
-  const endDate = new Date(+year1, +month1 - 1, +day1 + 1);
+  const endDate = new Date(Date.UTC(+year1, +month1 - 1, +day1));
   const result = [];
   const msPerDay = 24 * 60 * 60 * 1000;
   for (
@@ -360,7 +360,7 @@ function getWorkSchedule(period, countWorkDays, countOffDays) {
       const [day2, month2, year2] = [
         date.getUTCDate().toString().padStart(2, '0'),
         (date.getUTCMonth() + 1).toString().padStart(2, '0'),
-        date.getFullYear(),
+        date.getUTCFullYear(),
       ];
       tmp += 1;
       offset += msPerDay;
