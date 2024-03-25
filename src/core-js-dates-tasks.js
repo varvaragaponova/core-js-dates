@@ -336,15 +336,13 @@ function getQuarter(date) {
  * { start: '01-01-2024', end: '10-01-2024' }, 1, 1 => ['01-01-2024', '03-01-2024', '05-01-2024', '07-01-2024', '09-01-2024']
  */
 function getWorkSchedule(period, countWorkDays, countOffDays) {
-  function ff(dateString) {
-    const [day, month, year] = dateString.split('-');
-    return new Date(+year, +month - 1, +day + 1);
-  }
   const { start } = period;
   const { end } = period;
 
-  const startDate = ff(start);
-  const endDate = ff(end);
+  const [day, month, year] = start.split('-');
+  const startDate = new Date(+year, +month - 1, +day + 1);
+  const [day1, month1, year1] = end.split('-');
+  const endDate = new Date(+year1, +month1 - 1, +day1 + 1);
   const result = [];
   const msPerDay = 24 * 60 * 60 * 1000;
   for (
